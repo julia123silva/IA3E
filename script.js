@@ -9,11 +9,11 @@ const pergunta = [//abre a lista de objetos (itens)
         alternativa:["Sim", "Não"]
     },
     {
-        enunciado: "Você pratica exercícios fisicos?"
+        enunciado: "Você acha a inteligencia artificial eficiente?"
         alternativa: ["Sim", "Não"]
     },
     {
-        enunciado: "você é de humanas ou exatas?"
+        enunciado: "Você é de humanas ou exatas?"
         alternativa: ["Exatas", "Humanas"]
     }
 
@@ -27,5 +27,11 @@ function mostraPergunta(){
     mostraAlternativas();
 }
 function mostraAlternativas(){
-    for
+    for (const alternativa of perguntaAtual.alternativa){
+        const botaoAlternativa = document.createElement("button");
+        botaoAlternativas.textContent = alternativa;
+        caixaAlternativa.appendChild(botaoAlternativas);
+    }
+
 }
+mostraPergunta();
