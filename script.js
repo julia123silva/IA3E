@@ -5,61 +5,72 @@ const caixaResultado = document.querySelector('.caixa-resultado');
 
 const perguntas = [//abre a lista de objetos (itens)
     {//abre o item
-        enunciado:"Você gosta da inteligencia artificial?"
-        alternativa:[{
-            texto:"Sim",
-            afirmação:"Porque ela é incrivel"
-            },
-            {
-                texto: "Não",
-                afirmação:""
-            }
+        enunciado: "Você gosta da Inteligência Artificial?",
+        alternativas: [{
+            texto: "Sim",
+            afirmação: "Me ajuda no cotidiano"
+        },
+        {
+            texto: "Não",
+            afirmação: "Ela só veio para nos controlar"
+        }
         ]
     },
     {
-        enunciado: "Você acha a inteligencia artificial eficiente?"
-        alternativa:[{
-            texto:"Sim",
-            afirmação:"Ate demais, ela cria e responde as melhores coisas que nem nós pensamos"
-            },
-            {
-                texto: "nao",
-                afirmação:"Porque a partir de um momento ela vai começar a controlar os afazeres dos seres humanos"
-            }
+        enunciado: "Você acha a Inteligencia artificial eficiente?",
+        alternativas: [{
+            texto: "Sim",
+            afirmação: "Muito, ela me ajuda com perguntas e resposta que eu nem imaginava"
+        },
+        {
+            texto:"Não",
+            afirmação:"Acho eficiente mas, isso esta acabando com a humanidade e a inteligência humana"
+        }
         ]
     },
     {
-        enunciado: "Você é de humanas ou exatas?"
-        alternativa: [{
-            texto:"Exatas",
-            afirmação:"me dou melhor com a matemática"
-            },
-            {
-                texto:"humanas",
-                afirmação:"sou melhor em linguagens"
-            }
+        enunciado: "Você é de humanas ou exatas?",
+        alternativas: [{
+            texto: "Humanas",
+            afirmação: "Humanas, dou melhor com linguagens"
+        },
+        {
+            texto: "Exatas",
+            afirmação: "Exatas, dou melhor com matemática"
+        }
         ]
     }
-
 ]
 let posicao = 0;
 let perguntaAtual;
+let respostas = "";
 
-function mostraPergunta(){
-    perguntaAtual = perguntas[posicao].enunciado;
+
+function mostraPergunta() {
+    if (posicao>=perguntas.length){
+        mostraResultado();
+        return;
+    }
+    perguntaAtual = perguntas[posicao];
     caixaPergunta.textContent = perguntaAtual.enunciado;
+    caixaAlternativa.textContent = " ";
     mostraAlternativas();
 }
-function mostraAlternativas(){
-    for (const alternativa of perguntaAtual.alternativa){
-        const botaoAlternativa = document.createElement("button");
+function mostraAlternativas() {
+    for (const alternativa of perguntaAtual.alternativas) {
+        const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventlistener("click", funcion(){
-            posição++;
-            mostraPergunta():
-        });
+        botaoAlternativas.addEventListener("click",  ()=> RespostasSelecionadas(alternativa));
         caixaAlternativa.appendChild(botaoAlternativas);
     }
-
+}
+function RespostasSelecionadas(opcaoSelecionada){ 
+    const afirmacoes = opcaoSelecionada.afirmação;
+    respostas = afirmacoes
+    posicao++;
+    mostraPergunta();
+}
+function mostraResultado(){
+    caixaPergunta.textContent = "Daqui 10 anos ou ate menos a Inteligência Artificial dominará o mundo e todos!";
 }
 mostraPergunta();
