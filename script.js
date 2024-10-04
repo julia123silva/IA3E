@@ -66,11 +66,13 @@ function mostraAlternativas() {
 }
 function RespostasSelecionadas(opcaoSelecionada){ 
     const afirmacoes = opcaoSelecionada.afirmação;
-    respostas = afirmacoes
+    respostas += afirmacoes +" ";
     posicao++;
     mostraPergunta();
 }
 function mostraResultado(){
-    caixaPergunta.textContent = "Daqui 10 anos ou ate menos a Inteligência Artificial dominará o mundo e todos!";
+    caixaPergunta.textContent = "Daqui 10 anos ou até menos a Inteligência Artificial dominará o mundo e todos!";
+    textoResultado.textConten = respostas;
+    caixaAlternativa.textContent = "";
 }
 mostraPergunta();
