@@ -1,7 +1,7 @@
 :root{
-    --cor-fundo: #01080E;
-    --cor-principal: #0b0d20;
-    --cor-secundaria: #212333;
+    --cor-fundo: #060af3;
+    --cor-principal: hsl(241, 84%, 76%);
+    --cor-secundaria: #040208;
     --cor-destaque: #2dbefd;
     --cor-texto: #D7F9FF;
 }

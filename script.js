@@ -2,44 +2,36 @@ const caixaPrincipal = document.querySelector('.caixa-principal');
 const caixaPergunta = document.querySelector('.caixa-pergunta');
 const caixaAlternativa = document.querySelector('.caixa-alternativa');
 const caixaResultado = document.querySelector('.caixa-resultado');
+const textoResultado = document.querySelector('.texto-resultado');
 
-const perguntas = [//abre a lista de objetos (itens)
-    {//abre o item
-        enunciado: "Você gosta da Inteligência Artificial?",
-        alternativas: [{
-            texto: "Sim",
-            afirmação: "Me ajuda no cotidiano"
-        },
-        {
-            texto: "Não",
-            afirmação: "Ela só veio para nos controlar"
-        }
-        ]
+const perguntas = [     //serve para abrir lista de perguntas
+    {   //abre o objeto das perguntas
+        enunciado: "Você acredita que a telemedicina é uma opção viável para as consultas médicas?",
+        alternativas: [
+            {texto: "Sim",
+            afirmação:"A telemedicina facilita o acesso e cuidados médicos."}, 
+
+            {texto: "Não",
+            afirmação:"Sinto que a telemedicina não é eficiente, especialmente para exames físicos ou algo mais complexo."}]
     },
-    {
-        enunciado: "Você acha a Inteligencia artificial eficiente?",
-        alternativas: [{
-            texto: "Sim",
-            afirmação: "Muito, ela me ajuda com perguntas e resposta que eu nem imaginava"
-        },
-        {
-            texto:"Não",
-            afirmação:"Acho eficiente mas, isso esta acabando com a humanidade e a inteligência humana"
-        }
-        ]
+    { 
+        enunciado: "Você se sentia confortável compartilhando suas informações em uma plataforma de telemedicina?",
+        alternativas: [
+            {texto: "Sim",
+            afirmação:"Confio que essas plataformas possuem medidades de segurança."}, 
+                
+            {texto: "Não",
+            afirmação:"Tenho preocupações sobre a privacidade."}]
     },
-    {
-        enunciado: "Você é de humanas ou exatas?",
-        alternativas: [{
-            texto: "Humanas",
-            afirmação: "Humanas, dou melhor com linguagens"
-        },
-        {
-            texto: "Exatas",
-            afirmação: "Exatas, dou melhor com matemática"
-        }
-        ]
-    }
+    { 
+        enunciado: "Você usaria a telemedicina para tratamentos de doenças crônicas?",
+        alternativas: [
+            {texto: "Sim",
+            afirmação:"Acho as consultas online convenientes e tenho um acesso mais frequente para acompanhar meus problemas."}, 
+                
+            {texto: "Não",
+            afirmação:"Prefiro atendimento presencial para ser algo mais detalhado."}]
+    },
 ]
 let posicao = 0;
 let perguntaAtual;
@@ -60,19 +52,19 @@ function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
-        botaoAlternativas.addEventListener("click",  ()=> RespostasSelecionadas(alternativa));
+        botaoAlternativas.addEventListener("click",  () => respostasSelecionadas(alternativa));
         caixaAlternativa.appendChild(botaoAlternativas);
     }
 }
-function RespostasSelecionadas(opcaoSelecionada){ 
+function respostasSelecionadas(opcaoSelecionada){
     const afirmacoes = opcaoSelecionada.afirmação;
-    respostas += afirmacoes +" ";
+    respostas += afirmacoes + " ";
     posicao++;
     mostraPergunta();
 }
 function mostraResultado(){
-    caixaPergunta.textContent = "Daqui 10 anos ou até menos a Inteligência Artificial dominará o mundo e todos!";
-    textoResultado.textConten = respostas;
+    caixaPergunta.textContent = "Confira suas respostas: ";
+    textoResultado.textContent = respostas; 
     caixaAlternativa.textContent = "";
 }
 mostraPergunta();
